@@ -7,6 +7,7 @@ class BlockModel(object):
     # ----------------------------------------------------------------------
 
     def __init__(self, plugin):
+        """ """
         self.__plugin = plugin
         self.x = plugin.x
         self.y = plugin.y

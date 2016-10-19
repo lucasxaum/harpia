@@ -190,8 +190,8 @@ class Block(GooCanvas.CanvasGroup, BlockModel):
                 pixbuf = GdkPixbuf.Pixbuf.new_from_file(
                     self.data_dir +
                     System.connectors[
-                                    self.get_description()["OutTypes"][x]
-                                    ]["icon_out"])
+                        self.get_description()["OutTypes"][x]
+                    ]["icon_out"])
             except:
                 pass
 

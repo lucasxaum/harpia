@@ -3,10 +3,10 @@ from harpia.model.plugin import Plugin
 
 class TestPlugin(TestCase):
 
-    def test_setUp(self):
+    def setUp(self):
         """Do the test basic setup."""
         win = MainWindow()
-        self.main_control = MainControl(win)
+        self.plugin = MainControl(win)
 
     # ----------------------------------------------------------------------x
     def test_get_output_port_name(self):

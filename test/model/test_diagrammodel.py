@@ -6,7 +6,7 @@ class TestDiagramModel(TestCase):
     def setUp(self):
         """Do the test basic setup."""
         win = MainWindow()
-        self.main_control = MainControl(win)
+        self.diagram_model = MainControl(win)
 
     # ----------------------------------------------------------------------
     def add_block(self):

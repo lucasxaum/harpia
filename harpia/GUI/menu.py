@@ -11,6 +11,7 @@ import gettext
 gettext.bindtextdomain(System.APP, System.DIR)
 gettext.textdomain(System.APP)
 
+
 class Menu(Gtk.MenuBar):
 
     # ----------------------------------------------------------------------

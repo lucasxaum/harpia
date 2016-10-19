@@ -17,7 +17,6 @@ from blockproperties import BlockProperties
 from harpia.control.maincontrol import MainControl
 
 
-
 class MainWindow(Gtk.Window):
 
     def __init__(self):

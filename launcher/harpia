@@ -6,7 +6,9 @@ import gi
 import os
 import sys
 import argparse
+
 from gi.repository import Gtk
+
 from harpia.GUI.mainwindow import MainWindow
 from harpia.control.maincontrol import MainControl
 
@@ -16,28 +18,15 @@ gi.require_version('Gtk', '3.0')
 # --------HARPIA FRONTEND MAIN FUNCTION--------------
 # ---------------------------------------------------
 
-# <<<<<<< HEAD
-# class Log(object):
-#     def log(self, msg):
-#         print msg.encode('ascii','ignore')
-# =======
-# >>>>>>> 42ce749d63a772084bebe7321cf18c3c84b03ca3
-
 def main(argv):
     """
         The Harpia-Frontend class is where the main function starts the system.
         It initializes the interface.
     """
 
-# <<<<<<< HEAD
-#     os.environ['HARPIA_DATA_DIR']="/usr/share/harpia/"
-#     System()
-#     System.set_log(Log())
-
-# =======
     reload(sys)
     sys.setdefaultencoding('utf8')
-# >>>>>>> 42ce749d63a772084bebe7321cf18c3c84b03ca3
+
 
     # Initialize the Frontend
     win = MainWindow()
@@ -45,21 +34,18 @@ def main(argv):
 
     # Parameter passing
     parser = argparse.ArgumentParser()
-# <<<<<<< HEAD
-#     parser.add_argument('file', default=[], nargs='*', help="List of files to open")
-#     parser.add_argument("-x", "--examples", help="Generate examples", action='store_true')
-#     parser.add_argument("-c", "--compile", help="Compile examples", action='store_true')
-#     parser.add_argument("-t", "--test", help="Test examples", action='store_true')
-# =======
+    parser.add_argument('file', default=[], nargs='*', help="List of files to open")
+    parser.add_argument("-x", "--examples", help="Generate examples", action='store_true')
+    parser.add_argument("-c", "--compile", help="Compile examples", action='store_true')
+    parser.add_argument("-t", "--test", help="Test examples", action='store_true')
+    
     parser.add_argument('file', default=[], nargs='*',
                         help="List of files to open")
     args = parser.parse_args()
 
-    ##-----------------------------------
-
-    if args.test:
-        print OKBLUE + "\nHelp\tGenerate  Description\t Properties\tLabel" + ENDC
-        print"====\t========  ===========\t ==========\t=====\n"
+    #if args.test:
+        #print OKBLUE + "\nHelp\tGenerate  Description\t Properties\tLabel" + ENDC
+        #print"====\t========  ===========\t ==========\t=====\n"
 
     for key in System.blocks:
         obj = System.blocks[key]()
