@@ -15,16 +15,14 @@ class CropImage(OpenCVPlugin):
         self.width = 640
         self.height = 480
 
+        # Appearance
         self.help = "Corta a Imagem de acordo com o Retangulo de entrada."
-
-        self.description = {
-            'Label': 'Crop Image',
-            'Icon': 'images/cropImage.png',
-            'Color': '50:50:200:150',
-            'InTypes': {0: 'HRP_IMAGE', 1: 'HRP_RECT'},
-            'OutTypes': {0: 'HRP_IMAGE'},
-            'TreeGroup': 'Experimental'
-        }
+        self.label = "Crop Image"
+        self.icon = "images/cropImage.png"
+        self.color = "50:50:200:150"
+        self.in_types = ["HRP_IMAGE", "HRP_RECT"]
+        self.out_types = ["HRP_IMAGE"]
+        self.group = "Experimental"
 
         self.properties = {
             "x0": {"name": "X",
@@ -86,27 +84,4 @@ class CropImage(OpenCVPlugin):
             '   cvCopyImage(block$id$_img_i0,block$id$_img_o0);\n' + \
             '}\n'
 
-    # ----------------------------------------------------------------------
-    def get_help(self):
-        return self.help
-
-    # ----------------------------------------------------------------------
-    def __del__(self):
-        pass
-
-    # ----------------------------------------------------------------------
-    def get_description(self):
-        return self.description
-
-    # ----------------------------------------------------------------------
-    def get_properties(self):
-        return self.properties
-
-    # ----------------------------------------------------------------------
-    def generate_vars(self):
-        return self.vars
-
-    # ----------------------------------------------------------------------
-    def generate_function_call(self):
-        return self.function_call
 # ------------------------------------------------------------------------------

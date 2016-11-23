@@ -12,16 +12,14 @@ class LiveDelay(OpenCVPlugin):
         OpenCVPlugin.__init__(self)
         self.frameNumber = 5
 
+        # Appearance
         self.help = "Inserts a delay inside a live stream."
-
-        self.description = {
-            'Label': 'Live Delay',
-            'Icon': 'images/liveDelay.png',
-            'Color': '250:20:30:150',
-            'InTypes': {0: 'HRP_IMAGE'},
-            'OutTypes': {0: 'HRP_IMAGE'},
-            'TreeGroup': 'General',
-        }
+        self.label = "Live Delay"
+        self.icon = "images/liveDelay.png"
+        self.color = "250:20:30:150"
+        self.in_types = ["HRP_IMAGE"]
+        self.out_types = ["HRP_IMAGE"]
+        self.group = "General"
 
         self.properties = {
             "frameNumber": {
@@ -33,8 +31,6 @@ class LiveDelay(OpenCVPlugin):
             }
         }
         # ------------------------------C/OpenCv code--------------------------
-        self.vars = ""
-
         self.function_call = '''
             if(block$id$_img_i0){
                 cvReleaseImage(&(block$id$_buffer[i_$id$]));
@@ -51,18 +47,6 @@ class LiveDelay(OpenCVPlugin):
                 if(block$id$_buffer[i_$id$] != NULL)
                     cvReleaseImage(&(block$id$_buffer[i_$id$]));
             '''
-
-    # ----------------------------------------------------------------------
-    def get_help(self):
-        return self.help
-
-    # ----------------------------------------------------------------------
-    def get_description(self):
-        return self.description
-
-    # ----------------------------------------------------------------------
-    def get_properties(self):
-        return self.properties
 
     # ----------------------------------------------------------------------
     def generate_vars(self):
@@ -86,17 +70,5 @@ class LiveDelay(OpenCVPlugin):
             str(self.frameNumber - 1) + '];\n'
 
         return value
-
-    # ----------------------------------------------------------------------
-    def generate_function_call(self):
-        return self.function_call
-
-    # ----------------------------------------------------------------------
-    def generate_dealloc(self):
-        return self.dealloc
-
-    # ----------------------------------------------------------------------
-    def generate_out_dealloc(self):
-        return self.out_dealloc
 
 # -----------------------------------------------------------------------------

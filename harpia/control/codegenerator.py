@@ -35,7 +35,6 @@
 import os
 import time
 import datetime
-import gi
 import gettext
 from harpia.system import System as System
 
@@ -227,10 +226,10 @@ class CodeGenerator():
     # ----------------------------------------------------------------------
     def save_code(self):
         System.log("Saving Code to " + self.dir_name + self.filename)
-        pass
 
     # ----------------------------------------------------------------------
     def compile(self):
+        System.log("Compiling " + self.dir_name + self.filename)
         pass
 
     # ----------------------------------------------------------------------

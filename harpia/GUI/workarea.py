@@ -2,14 +2,11 @@
 # -*- coding: utf-8 -*-
 
 import gi
-from diagram import Diagram
-from gi.repository import Gtk
-from gi.repository import Gdk
-from harpia.GUI.dialog import Dialog
-from harpia.control.diagramcontrol import DiagramControl
-
 gi.require_version('Gtk', '3.0')
-
+from gi.repository import Gtk
+from harpia.GUI.dialog import Dialog
+import gettext
+_ = gettext.gettext
 
 class WorkArea(Gtk.Notebook):
 
@@ -50,11 +47,11 @@ class WorkArea(Gtk.Notebook):
         diagram = tab.get_children()[0]
 
         if diagram.get_modified():
-            dialog = Dialog().confirm_dialog("Diagram " +
+            dialog = Dialog().confirm_dialog(_("Diagram ") +
                                              diagram.get_file_name() +
-                                             " is not saved. \nIf you close it"
+                                             _(" is not saved. \nIf you close it"
                                              ", changes will be lost.\n"
-                                             "Confirm?", self.main_window)
+                                             "Confirm?"), self.main_window)
             result = dialog.run()
             dialog.destroy()
             if result == Gtk.ResponseType.CANCEL:

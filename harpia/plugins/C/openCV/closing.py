@@ -12,18 +12,16 @@ class Closing(OpenCVPlugin):
         OpenCVPlugin.__init__(self)
         self.masksize = "7x7"
 
+        # Appearance
         self.help = "Operação de morfologia matemática para realizar o " + \
             "fechamento da imagem de acordo com o elemento estruturante." + \
             "Equivale a aplicação de uma dilatação seguida de uma erosão."
-
-        self.description = {
-            "Label": "Closing",
-            "Icon": "images/closing.png",
-            "Color": "180:230:220:150",
-            "InTypes": {0: "HRP_IMAGE", 1: "HRP_INT", 2: "HRP_INT"},
-            "OutTypes": {0: "HRP_IMAGE"},
-            "TreeGroup": "Morphological Operations"
-        }
+        self.label = "Closing"
+        self.icon = "images/closing.png"
+        self.color = "180:230:220:150"
+        self.in_types = ["HRP_IMAGE", "HRP_INT", "HRP_INT"]
+        self.out_types = ["HRP_IMAGE"]
+        self.group = "Morphological Operations"
 
         self.properties = {
             "masksize": {"name": "Mask Size",
@@ -57,33 +55,5 @@ class Closing(OpenCVPlugin):
             'cvReleaseImage(&block$id$_img_o0);\n' + \
             'cvReleaseStructuringElement(&block$id$_arg_mask);\n' + \
             'cvReleaseImage(&block$id$_img_i0);\n'
-
-    # ----------------------------------------------------------------------
-    def get_help(self):
-        return self.help
-
-    # ----------------------------------------------------------------------
-    def generate_vars(self):
-        return self.vars
-
-    # ----------------------------------------------------------------------
-    def generate_function_call(self):
-        return self.function_call
-
-    # ----------------------------------------------------------------------
-    def generate_dealloc(self):
-        return self.dealloc
-
-    # ----------------------------------------------------------------------
-    def __del__(self):
-        pass
-
-    # ----------------------------------------------------------------------
-    def get_description(self):
-        return self.description
-
-    # ----------------------------------------------------------------------
-    def get_properties(self):
-        return self.properties
 
 # --------------------------------------------------------------------------

@@ -1,15 +1,24 @@
 #!/usr/bin/env python
- # -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 from harpia.GUI.fieldtypes import *
 from harpia.plugins.javascript.webaudio.webaudioplugin import WebaudioPlugin
 
+
 class WhiteNoise(WebaudioPlugin):
 
-# ------------------------------------------------------------------------------
+    # --------------------------------------------------------------------------
     def __init__(self):
         WebaudioPlugin.__init__(self)
+
+        # Appearance
         self.help = "White Noise"
+        self.label = "White Noise"
+        self.icon = "images/show.png"
+        self.color = "50:150:250:150"
+        self.out_types = ["HRP_WEBAUDIO_SOUND"]
+        self.group = "Sound"
+
         self.header = """
 WhiteNoise = function(context) {
   var that = this;
@@ -33,10 +42,3 @@ WhiteNoise.prototype.process = function(e) {
 // block_$id$ = White Noise
 var block_$id$ =  new WhiteNoise(context).node;
 """
-        self.description = {"Label": "White Noise",
-            "Icon": "images/show.png",
-            "Color": "50:150:250:150",
-            "InTypes": {},
-            "OutTypes": {0: "HRP_WEBAUDIO_SOUND"},
-            "TreeGroup": "Sound"
-            }

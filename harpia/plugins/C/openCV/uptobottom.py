@@ -11,16 +11,14 @@ class UpToBottom(OpenCVPlugin):
     def __init__(self):
         OpenCVPlugin.__init__(self)
 
+        # Appearance
         self.help = "Coloca uma imagem debaixo da outra."
-
-        self.description = {
-            "Label": "Up to Bottom",
-            "Icon": "images/and.png",
-            "Color": "10:180:10:150",
-            "InTypes": {0: "HRP_IMAGE", 1: "HRP_IMAGE"},
-            "OutTypes": {0: "HRP_IMAGE"},
-            "TreeGroup": "Arithmetic and logical operations"
-        }
+        self.label = "Up to Bottom"
+        self.icon = "images/and.png"
+        self.color = "10:180:10:150"
+        self.in_types = ["HRP_IMAGE", "HRP_IMAGE"]
+        self.out_types = ["HRP_IMAGE"]
+        self.group = "Arithmetic and logical operations"
 
         self.properties = {}
 
@@ -49,25 +47,5 @@ class UpToBottom(OpenCVPlugin):
             'if (block$id$_img_o0) cvReleaseImage(&block$id$_img_o0);\n' + \
             'cvReleaseImage(&block$id$_img_i0);\n' + \
             'cvReleaseImage(&block$id$_img_i1);\n'
-
-    # ----------------------------------------------------------------------
-    def get_help(self):
-        return self.help
-
-    # -------------------------------------------------------------------------
-    def get_description(self):
-        return self.description
-
-    # -------------------------------------------------------------------------
-    def get_properties(self):
-        return self.properties
-
-    # -------------------------------------------------------------------------
-    def generate_function_call(self):
-        return self.function_call
-
-    # -------------------------------------------------------------------------
-    def generate_dealloc(self):
-        return self.dealloc
 
 # -----------------------------------------------------------------------------

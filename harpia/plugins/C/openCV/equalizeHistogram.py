@@ -11,20 +11,16 @@ class EqualizeHistogram(OpenCVPlugin):
     def __init__(self):
         OpenCVPlugin.__init__(self)
 
+        # Appearance
         self.help = "A equalização do histograma de uma imagem visa " + \
             "alcançar maior contraste entre os " + \
             "diversos elementos de uma imagem."
-
-        self.description = {
-            "Label": "Equalize Histogram",
-            "Icon": "images/equalizeHistogram.png",
-            "Color": "0:0:0:150",
-            "InTypes": {0: "HRP_IMAGE"},
-            "OutTypes": {0: "HRP_IMAGE"},
-            "TreeGroup": "Histograms"
-        }
-
-        self.properties = {}
+        self.label = "Equalize Histogram"
+        self.icon = "images/equalizeHistogram.png"
+        self.color = "0:0:0:150"
+        self.in_types = ["HRP_IMAGE"]
+        self.out_types = ["HRP_IMAGE"]
+        self.group = "Histograms"
 
         # -------------------C/OpenCv code-------------------------------------
         self.vars =  \
@@ -64,30 +60,5 @@ class EqualizeHistogram(OpenCVPlugin):
             'cvReleaseImage(&block$id$_EqCx[1]);\n' + \
             'cvReleaseImage(&block$id$_EqCx[2]);\n' + \
             '}\n'
-
-    # ----------------------------------------------------------------------
-    def get_help(self):
-        return self.help
-
-    # ----------------------------------------------------------------------
-    def __del__(self):
-        pass
-
-    # ----------------------------------------------------------------------
-    def get_description(self):
-        return self.description
-
-    # ----------------------------------------------------------------------
-    def get_properties(self):
-        return self.properties
-
-    # ----------------------------------------------------------------------
-    def generate_vars(self):
-        return self.vars
-
-    # ----------------------------------------------------------------------
-    def generate_function_call(self):
-        return self.function_call
-
 
 # -----------------------------------------------------------------------------

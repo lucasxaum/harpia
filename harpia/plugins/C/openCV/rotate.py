@@ -17,16 +17,14 @@ class Rotate(OpenCVPlugin):
         self.yC = 20
         self.angle = 0
 
-        self.help = "Rotates input image the input angle degrees."
-
-        self.description = {
-            "Label": "Rotate Image",
-            "Icon": "images/rotate.png",
-            "Color": "90:5:10:150",
-            "InTypes": {0: "HRP_IMAGE", 1: "HRP_DOUBLE"},
-            "OutTypes": {0: "HRP_IMAGE"},
-            "TreeGroup": "Experimental"
-        }
+        # Appearance
+        self.help = "Adiciona bordas na imagem."
+        self.label = "Rotate Image"
+        self.icon = "images/rotate.png"
+        self.color = "90:5:10:150"
+        self.in_types = ["HRP_IMAGE", "HRP_DOUBLE"]
+        self.out_types = ["HRP_IMAGE"]
+        self.group = "Experimental"
 
         self.properties = {
             "isCenter": {
@@ -71,28 +69,12 @@ class Rotate(OpenCVPlugin):
             'IplImage * block$id$_img_o0 = NULL;\n'
 
     # ----------------------------------------------------------------------
-    def get_help(self):
-        return self.help
-
-    # ----------------------------------------------------------------------
-    def get_description(self):
-        return self.description
-
-    # ----------------------------------------------------------------------
-    def get_properties(self):
-        return self.properties
-
-    # ----------------------------------------------------------------------
     def generate_header(self):
         return \
             "#define PI 3.1415926535898\n" + \
             "double rads(double degs){\n" + \
             "   return (PI/180 * degs);\n" + \
             "}\n\n"
-
-    # ----------------------------------------------------------------------
-    def generate_vars(self):
-        return self.vars
 
     # ----------------------------------------------------------------------
     def generate_function_call(self):

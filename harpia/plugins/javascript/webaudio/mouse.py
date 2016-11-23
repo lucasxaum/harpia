@@ -1,15 +1,24 @@
 #!/usr/bin/env python
- # -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 from harpia.GUI.fieldtypes import *
 from harpia.plugins.javascript.webaudio.webaudioplugin import WebaudioPlugin
 
+
 class Mouse(WebaudioPlugin):
 
-# ------------------------------------------------------------------------------
+    # --------------------------------------------------------------------------
     def __init__(self):
         WebaudioPlugin.__init__(self)
+
+        # Appearance
         self.help = "Mouse Position"
+        self.label = "Mouse Position"
+        self.icon = "images/show.png"
+        self.color = "50:50:50:150"
+        self.out_types = ["HRP_WEBAUDIO_FLOAT", "HRP_WEBAUDIO_FLOAT"]
+        self.group = "Interface"
+
         self.vars = """
 // block_$id$ = Mouse
 var block_$id$_o0 = [];
@@ -56,10 +65,3 @@ function getMouseXY(e) {
 }
 // ----------------- Mouse position ----------------------------
 """
-        self.description = {"Label": "Mouse Position",
-            "Icon": "images/show.png",
-            "Color": "50:50:50:150",
-            "InTypes": {},
-            "OutTypes": {0: "HRP_WEBAUDIO_FLOAT", 1: "HRP_WEBAUDIO_FLOAT"},
-            "TreeGroup": "Interface"
-            }

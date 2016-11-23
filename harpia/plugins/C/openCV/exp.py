@@ -11,20 +11,16 @@ class Exp(OpenCVPlugin):
     def __init__(self):
         OpenCVPlugin.__init__(self)
 
+        # Appearance
         self.help = "Aplica a função exponencial a uma imagem, ou seja, " + \
             "eleva a constante neperiana ao valor " + \
             "de intensidade luminosa de cada ponto da imagem."
-
-        self.description = {
-            "Label": "Exp",
-            "Icon": "images/exp.png",
-            "Color": "230:230:60:150",
-            "InTypes": {0: "HRP_IMAGE"},
-            "OutTypes": {0: "HRP_IMAGE"},
-            "TreeGroup": "Math Functions"
-        }
-
-        self.properties = {}
+        self.label = "Exp"
+        self.icon = "images/exp.png"
+        self.color = "230:230:60:150"
+        self.in_types = ["HRP_IMAGE"]
+        self.out_types = ["HRP_IMAGE"]
+        self.group = "Math Functions"
 
         # --------------------------C/OpenCv code------------------------------
         self.vars = \
@@ -49,33 +45,5 @@ class Exp(OpenCVPlugin):
             'cvReleaseImage(&block$id$_img_o0);\n' + \
             'cvReleaseImage(&block$id$_img_i0);\n' + \
             'cvReleaseImage(&block$id$_img_t);\n'
-
-    # ----------------------------------------------------------------------
-    def get_help(self):
-        return self.help
-
-    # ----------------------------------------------------------------------
-    def __del__(self):
-        pass
-
-    # ----------------------------------------------------------------------
-    def get_description(self):
-        return self.description
-
-    # ----------------------------------------------------------------------
-    def get_properties(self):
-        return self.properties
-
-    # ----------------------------------------------------------------------
-    def generate_vars(self):
-        return self.vars
-
-    # ----------------------------------------------------------------------
-    def generate_function_call(self):
-        return self.function_call
-
-    # ----------------------------------------------------------------------
-    def generate_dealloc(self):
-        return self.dealloc
 
 # -----------------------------------------------------------------------------

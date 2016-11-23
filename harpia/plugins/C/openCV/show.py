@@ -13,16 +13,13 @@ class Show(OpenCVPlugin):
         self.title = "My Image"
         self.window_type = "Image Size"
 
+        # Appearance
         self.help = "Mostra uma imagem da cadeia de processamento de imagens."
-
-        self.description = {
-            "Label": "Show Image",
-            "Icon": "images/show.png",
-            "Color": "50:100:200:150",
-            "InTypes": {0: "HRP_IMAGE"},
-            "OutTypes": {},
-            "TreeGroup": "General"
-        }
+        self.label = "Show Image"
+        self.icon = "images/show.png"
+        self.color = "50:100:200:150"
+        self.in_types = ["HRP_IMAGE"]
+        self.group = "General"
 
         self.properties = {
             "title": {
@@ -37,19 +34,6 @@ class Show(OpenCVPlugin):
         }
 
         # -------------------C/OpenCv code------------------------------------
-        self.vars = ""
-
-    # -------------------------------------------------------------------------
-    def get_help(self):
-        return self.help
-
-    # -------------------------------------------------------------------------
-    def get_description(self):
-        return self.description
-
-    # -------------------------------------------------------------------------
-    def get_properties(self):
-        return self.properties
 
     # -------------------------------------------------------------------------
     def generate_vars(self):

@@ -14,17 +14,15 @@ class Sobel(OpenCVPlugin):
         self.xorder = 1
         self.yorder = 1
 
+        # Appearance
         self.help = "Operação de filtragem que utiliza uma máscara " + \
             "Sobel para realçar cantos e bordas da imagem."
-
-        self.description = {
-            "Label": "Sobel",
-            "Icon": "images/sobel.png",
-            "Color": "250:180:80:150",
-            "InTypes": {0: "HRP_IMAGE"},
-            "OutTypes": {0: "HRP_IMAGE"},
-            "TreeGroup": "Gradients, Edges and Corners"
-        }
+        self.label = "Sobel"
+        self.icon = "images/sobel.png"
+        self.color = "250:180:80:150"
+        self.in_types = ["HRP_IMAGE"]
+        self.out_types = ["HRP_IMAGE"]
+        self.group = "Gradients, Edges and Corners"
 
         self.properties = {
             "xorder": {
@@ -69,29 +67,5 @@ class Sobel(OpenCVPlugin):
             'cvReleaseImage(&block$id$_img_o0);\n' + \
             'cvReleaseImage(&block$id$_img_i0);\n' + \
             'cvReleaseImage(&block$id$_img_t);\n'
-
-    # -------------------------------------------------------------------------
-    def get_help(self):
-        return self.help
-
-    # -------------------------------------------------------------------------
-    def get_description(self):
-        return self.description
-
-    # -------------------------------------------------------------------------
-    def get_properties(self):
-        return self.properties
-
-    # -------------------------------------------------------------------------
-    def generate_vars(self):
-        return self.vars
-
-    # -------------------------------------------------------------------------
-    def generate_function_call(self):
-        return self.function_call
-
-    # -------------------------------------------------------------------------
-    def generate_dealloc(self):
-        return self.dealloc
 
 # -----------------------------------------------------------------------------

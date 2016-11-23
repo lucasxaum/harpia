@@ -11,16 +11,14 @@ class ComposeRGB(OpenCVPlugin):
     def __init__(self):
         OpenCVPlugin.__init__(self)
 
+        # Appearance
         self.help = "BLOCO Composição RGB"
-
-        self.description = {
-            "Label": "Compose RGB",
-            "Icon": "images/composeRGB.png",
-            "Color": "50:125:50:150",
-            "InTypes": {0: "HRP_IMAGE", 1: "HRP_IMAGE", 2: "HRP_IMAGE"},
-            "OutTypes": {0: "HRP_IMAGE"},
-            "TreeGroup": "Filters and Color Conversion"
-        }
+        self.label = "Compose RGB"
+        self.icon = "images/composeRGB.png"
+        self.color = "50:125:50:150"
+        self.in_types = ["HRP_IMAGE", "HRP_IMAGE", "HRP_IMAGE"]
+        self.out_types = ["HRP_IMAGE"]
+        self.group = "Filters and Color Conversion"
 
         # ------------------------C/OpenCv code-------------------------------
         self.vars = \
@@ -60,29 +58,5 @@ class ComposeRGB(OpenCVPlugin):
             'cvReleaseImage(&block$id$_img_i0);\n' + \
             'cvReleaseImage(&block$id$_img_i1);\n' + \
             'cvReleaseImage(&block$id$_img_i2);\n'
-
-    # ----------------------------------------------------------------------
-    def get_help(self):
-        return self.help
-
-    # ----------------------------------------------------------------------
-    def get_description(self):
-        return self.description
-
-    # ----------------------------------------------------------------------
-    def get_properties(self):
-        return {}
-
-    # ----------------------------------------------------------------------
-    def generate_vars(self):
-        return self.vars
-
-    # ----------------------------------------------------------------------
-    def generate_function_call(self):
-        return self.function_call
-
-    # ----------------------------------------------------------------------
-    def generate_dealloc(self):
-        return self.dealloc
 
 # -----------------------------------------------------------------------------

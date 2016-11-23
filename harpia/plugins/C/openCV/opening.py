@@ -12,17 +12,15 @@ class Opening(OpenCVPlugin):
         OpenCVPlugin.__init__(self)
         self.masksize = "3x3"
 
+        # Appearance
         self.help = "Operação morfológica que visa " + \
             "desconectar objetos em uma imagem ou suprimir ruídos."
-
-        self.description = {
-            "Label": "Opening",
-            "Icon": "images/opening.png",
-            "Color": "180:230:220:150",
-            "InTypes": {0: "HRP_IMAGE"},
-            "OutTypes": {0: "HRP_IMAGE"},
-            "TreeGroup": "Morphological Operations"
-        }
+        self.label = "Opening"
+        self.icon = "images/opening.png"
+        self.color = "180:230:220:150"
+        self.in_types = ["HRP_IMAGE"]
+        self.out_types = ["HRP_IMAGE"]
+        self.group = "Morphological Operations"
 
         self.properties = {
             "masksize": {
@@ -53,29 +51,5 @@ class Opening(OpenCVPlugin):
             'cvReleaseImage(&block$id$_img_o0);\n' + \
             'cvReleaseStructuringElement(&block$id$_arg_mask);\n' + \
             'cvReleaseImage(&block$id$_img_i0);\n'
-
-    # ----------------------------------------------------------------------
-    def get_help(self):
-        return self.help
-
-    # ----------------------------------------------------------------------
-    def get_description(self):
-        return self.description
-
-    # ----------------------------------------------------------------------
-    def get_properties(self):
-        return self.properties
-
-    # ----------------------------------------------------------------------
-    def generate_vars(self):
-        return self.vars
-
-    # ----------------------------------------------------------------------
-    def generate_function_call(self):
-        return self.function_call
-
-    # ----------------------------------------------------------------------
-    def generate_dealloc(self):
-        return self.dealloc
 
 # -----------------------------------------------------------------------------

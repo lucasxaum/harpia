@@ -13,16 +13,14 @@ class MoveRct(OpenCVPlugin):
         self.offset_x = 0
         self.offset_y = 0
 
+        # Appearance
         self.help = "Move Rectangle`s (0,0) point to input point"
-
-        self.description = {
-            'Label': 'Move Rectangle',
-            'Icon': 'images/moveRct.png',
-            'Color': '50:50:200:150',
-            'InTypes': {0: 'HRP_RECT', 1: 'HRP_POINT'},
-            'OutTypes': {0: 'HRP_RECT'},
-            'TreeGroup': 'Experimental'
-        }
+        self.label = "Move Rectangle"
+        self.icon = "images/moveRct.png"
+        self.color = "50:50:200:150"
+        self.in_types = ["HRP_RECT", "HRP_POINT"]
+        self.out_types = ["HRP_RECT"]
+        self.group = "Experimental"
 
         self.properties = {
             "offset_x": {
@@ -50,29 +48,5 @@ class MoveRct(OpenCVPlugin):
             'block$id$_rect_o0 = block$id$_rect_i0;\n' + \
             'block$id$_rect_o0.x = block$id$_point_i1.x + $offset_x$;\n' + \
             'block$id$_rect_o0.y = block$id$_point_i1.y + $offset_y$;\n'
-
-    # ----------------------------------------------------------------------
-    def get_help(self):
-        return self.help
-
-    # ----------------------------------------------------------------------
-    def __del__(self):
-        pass
-
-    # ----------------------------------------------------------------------
-    def get_description(self):
-        return self.description
-
-    # ----------------------------------------------------------------------
-    def get_properties(self):
-        return self.properties
-
-    # ----------------------------------------------------------------------
-    def generate_vars(self):
-        return self.vars
-
-    # ----------------------------------------------------------------------
-    def generate_function_call(self):
-        return self.function_call
 
 # ------------------------------------------------------------------------------

@@ -14,16 +14,14 @@ class SaveVideo(OpenCVPlugin):
         self.framerate = 25.0
         self.codecSelection = "MPEG1"
 
+        # Appearance
         self.help = "Save Video needs its description."
-
-        self.description = {
-            'Label': 'Save Video',
-            'Icon': 'images/saveVideo.png',
-            'Color': '120:20:20:150',
-            'InTypes': {0: 'HRP_IMAGE'},
-            'OutTypes': {0: 'HRP_IMAGE'},
-            'TreeGroup': 'General'
-        }
+        self.label = "Save Video"
+        self.icon = "images/saveVideo.png"
+        self.color = "120:20:20:150"
+        self.in_types = ["HRP_IMAGE"]
+        self.out_types = ["HRP_IMAGE"]
+        self.group = "General"
 
         self.properties = {
             "filename": {
@@ -57,22 +55,6 @@ class SaveVideo(OpenCVPlugin):
         self.out_dealloc = 'cvReleaseVideoWriter' + \
             '(&block$id$_vidWriter); // SaveVideo\n'
 
-    # -------------------------------------------------------------------------
-    def get_help(self):
-        return self.help
-
-    # -------------------------------------------------------------------------
-    def get_description(self):
-        return self.description
-
-    # ----------------------------------------------------------------------
-    def get_properties(self):
-        return self.properties
-
-    # ----------------------------------------------------------------------
-    def generate_vars(self):
-        return self.vars
-
     # ----------------------------------------------------------------------
     def generate_function_call(self):
         codecMacro = 'CV_FOURCC(\'P\',\'I\',\'M\',\'2\')'
@@ -103,13 +85,5 @@ class SaveVideo(OpenCVPlugin):
             '   cvWriteFrame( block$id$_vidWriter, block$id$_img_i0);\n' + \
             '   block$id$_img_o0 = block$id$_img_i0;\n' + \
             '}\n'
-
-    # ----------------------------------------------------------------------
-    def generate_dealloc(self):
-        return self.dealloc
-
-    # ----------------------------------------------------------------------
-    def generate_out_dealloc(self):
-        return self.out_dealloc
 
 # ------------------------------------------------------------------------------

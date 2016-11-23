@@ -29,6 +29,8 @@
 import gi
 import copy
 from block import Block
+gi.require_version('Gtk', '3.0')
+gi.require_version('GooCanvas', '2.0')
 from gi.repository import Gtk
 from gi.repository import Gdk
 from connector import Connector
@@ -36,10 +38,8 @@ from gi.repository import GObject
 from gi.repository import GooCanvas
 from harpia.system import System as System
 from harpia.model.diagrammodel import DiagramModel
-
-gi.require_version('Gtk', '3.0')
-gi.require_version('GooCanvas', '2.0')
-
+import gettext
+_ = gettext.gettext
 
 class Diagram(GooCanvas.Canvas, DiagramModel):
 
@@ -118,9 +118,9 @@ class Diagram(GooCanvas.Canvas, DiagramModel):
 
     # ----------------------------------------------------------------------
     def __on_key_press(self, widget, event=None):
-        if event.state == Gdk.ModifierType.CONTROL_MASK | \
-                Gdk.ModifierType.MOD2_MASK:
 
+        if event.state == \
+                Gdk.ModifierType.CONTROL_MASK | Gdk.ModifierType.MOD2_MASK:
             if event.keyval == Gdk.KEY_Up:
                 self.move_selected_blocks(0, -5)
                 return True
@@ -251,10 +251,10 @@ class Diagram(GooCanvas.Canvas, DiagramModel):
             if oldCon.sink == newCon.sink \
                     and oldCon.sink_port == newCon.sink_port\
                     and not System.connectors[newCon.type]["multiple"]:
-                System.log("Connector Already exists")
+                System.log(_("Connector Already exists"))
                 return False
         if newCon.sink == newCon.source:
-            System.log("Recursive connection is not allowed")
+            System.log(_("Recursive connection is not allowed"))
             return False
         return True
 
@@ -270,7 +270,7 @@ class Diagram(GooCanvas.Canvas, DiagramModel):
     # ----------------------------------------------------------------------
     def start_connection(self, block, output):
         self.__abort_connection()  # abort any possibly running connections
-        conn_type = block.get_description()["OutTypes"][output]
+        conn_type = block.get_out_types()[output]
         self.curr_connector = Connector(self, block, output, conn_type)
         self.get_root_item().add_child(self.curr_connector, -1)
         self.update_flows()
@@ -284,7 +284,7 @@ class Diagram(GooCanvas.Canvas, DiagramModel):
             self.__abort_connection()
             return False
         if not self.curr_connector.type_match():
-            System.log("Connection Types mismatch")
+            System.log(_("Connection Types mismatch"))
             self.__abort_connection()
             return False
         self.add_connection(self.curr_connector)
@@ -394,7 +394,7 @@ class Diagram(GooCanvas.Canvas, DiagramModel):
         for widget in clipboard:
             if not isinstance(widget, Block):
                 continue
-            plugin = copy.deepcopy(widget.get_plugin())
+            plugin = copy.deepcopy(widget)
             plugin.x += 20
             plugin.y += 20
             plugin.set_id(-1)
@@ -410,7 +410,7 @@ class Diagram(GooCanvas.Canvas, DiagramModel):
             if widget.source.get_id() not in replace or widget.sink.get_id() \
                     not in replace:
                 continue
-            print "continuing..."
+            print _("continuing...")
             source = replace[widget.source.get_id()]
             source_port = widget.source_port
             sink = replace[widget.sink.get_id()]
@@ -430,7 +430,7 @@ class Diagram(GooCanvas.Canvas, DiagramModel):
     def cut(self):
         if len(self.current_widgets) < 1:
             return
-        self.do("Cut")
+        self.do(_("Cut"))
         self.__main_window.main_control.reset_clipboard()
         for widget in self.current_widgets:
             self.__main_window.main_control.get_clipboard().append(widget)
@@ -478,7 +478,7 @@ class Diagram(GooCanvas.Canvas, DiagramModel):
         self.set_modified(True)
         action = (copy.copy(self.blocks), copy.copy(self.connectors), new_msg)
         self.undo_stack.append(action)
-        System.log("Do: " + new_msg)
+        System.log(_("Do: " + new_msg))
 
     # ---------------------------------------------------------------------
     def undo(self):
@@ -493,7 +493,7 @@ class Diagram(GooCanvas.Canvas, DiagramModel):
         self.redo_stack.append(action)
         if len(self.undo_stack) == 0:
             self.set_modified(False)
-        System.log("Undo: " + msg)
+        System.log(_("Undo: " + msg))
 
     # ---------------------------------------------------------------------
     def redo(self):
@@ -506,7 +506,7 @@ class Diagram(GooCanvas.Canvas, DiagramModel):
         msg = action[2]
         self.redraw()
         self.undo_stack.append(action)
-        System.log("Redo: " + msg)
+        System.log(_("Redo: " + msg))
 
     # ---------------------------------------------------------------------
     def get_min_max(self):

@@ -14,22 +14,15 @@ class LiveMode(OpenCVPlugin):
         OpenCVPlugin.__init__(self)
         self.camera = "/dev/video0"
 
+        # Appearance
         self.help = "Realiza a aquisição de uma imagem a partir de câmera."
-
-        self.description = {
-            "Label": "Live Mode",
-            "Icon": "images/acquisition.png",
-            "Color": "50:100:200:150",
-            "InTypes": "",
-            "OutTypes": {0: "HRP_IMAGE"},
-            "TreeGroup": "Image Source"
-        }
-
-        self.properties = {}
+        self.label = "Live Mode"
+        self.icon = "images/acquisition.png"
+        self.color = "50:100:200:150"
+        self.out_types = ["HRP_IMAGE"]
+        self.group = "Image Source"
 
         # ------------------------------C/OpenCv code--------------------------
-        self.vars = ""
-
         self.function_call = \
             '// Live Mode \n' + \
             'int value = cvGrabFrame(block$id$_capture);\n' + \
@@ -38,18 +31,6 @@ class LiveMode(OpenCVPlugin):
             '\tblock$id$_img_o0 = cvCloneImage(block$id$_frame);\n'
 
         self.out_dealloc = 'cvReleaseCapture(&block$id$_capture);\n'
-
-    # ----------------------------------------------------------------------
-    def get_help(self):
-        return self.help
-
-    # ----------------------------------------------------------------------
-    def __del__(self):
-        pass
-
-    # ----------------------------------------------------------------------
-    def get_description(self):
-        return self.description
 
     # ----------------------------------------------------------------------
     def get_properties(self):
@@ -78,14 +59,5 @@ class LiveMode(OpenCVPlugin):
             'block$id$_capture = cvCaptureFromCAM(' + camera + ');\n' + \
             'IplImage * block$id$_frame = NULL;\n' + \
             'IplImage * block$id$_img_o0 = NULL;\n'
-
-    # ----------------------------------------------------------------------
-    def generate_function_call(self):
-        return self.function_call
-
-    # ----------------------------------------------------------------------
-    def generate_out_dealloc(self):
-        return self.out_dealloc
-
 
 # ------------------------------------------------------------------------------

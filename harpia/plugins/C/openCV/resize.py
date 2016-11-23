@@ -12,17 +12,15 @@ class Resize(OpenCVPlugin):
         OpenCVPlugin.__init__(self)
         self.method = "CV_INTER_LINEAR"
 
+        # Appearance
         self.help = "Resizes the input image to the " + \
             "dimensions of the input rectangle."
-
-        self.description = {
-            "Label": "Resize Image",
-            "Icon": "images/resize.png",
-            "Color": "20:80:10:150",
-            "InTypes": {0: "HRP_IMAGE", 1: "HRP_RECT"},
-            "OutTypes": {0: "HRP_IMAGE"},
-            "TreeGroup": "Experimental"
-        }
+        self.label = "Resize Image"
+        self.icon = "images/resize.png"
+        self.color = "20:80:10:150"
+        self.in_types = ["HRP_IMAGE", "HRP_RECT"]
+        self.out_types = ["HRP_IMAGE"]
+        self.group = "Experimental"
 
         self.properties = {
             "method": {
@@ -34,8 +32,6 @@ class Resize(OpenCVPlugin):
         }
 
         # -------------------C/OpenCv code------------------------------------
-        self.vars = ""
-
         self.function_call = \
             'if(block$id$_img_i0){\n' + \
             'CvSize size$id$ = cvSize(block$id$_rect_i1.width,' + \
@@ -44,21 +40,5 @@ class Resize(OpenCVPlugin):
             'block$id$_img_i0->depth,block$id$_img_i0->nChannels);\n' + \
             'cvResize(block$id$_img_i0, block$id$_img_o0, $method$);\n' + \
             '}\n'
-
-    # ----------------------------------------------------------------------
-    def get_help(self):
-        return self.help
-
-    # ----------------------------------------------------------------------
-    def get_description(self):
-        return self.description
-
-    # ----------------------------------------------------------------------
-    def get_properties(self):
-        return self.properties
-
-    # ----------------------------------------------------------------------
-    def generate_function_call(self):
-        return self.function_call
 
 # -----------------------------------------------------------------------------

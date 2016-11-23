@@ -1,10 +1,8 @@
 import gi
+gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
-from gi.repository import Gdk
 from harpia.GUI.fieldtypes import *
 from harpia.GUI.components.field import Field
-
-gi.require_version('Gtk', '3.0')
 
 
 class CommentField(Field, Gtk.VBox):
@@ -17,7 +15,7 @@ class CommentField(Field, Gtk.VBox):
         Gtk.VBox.__init__(self)
 
         self.check_value(data, "name", "")
-        self.check_value(data, "value", 0)
+        self.check_value(data, "value", "")
         self.check_value(data, "height", 80)
         self.check_value(data, "width", 50)
 

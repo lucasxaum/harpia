@@ -14,6 +14,7 @@ class HaarDetect(OpenCVPlugin):
             "haarcascade_frontalface_alt2.xml"
         self.min_neighbors = 2
 
+        # Appearance
         self.help = 'Haar (face) Detector finds regions on the input ' + \
             'image according to the given haar-classifier. \n' + \
             'First Output is the center of the first detected feature, ' + \
@@ -21,16 +22,12 @@ class HaarDetect(OpenCVPlugin):
             'detected feature and the third is the input image with ' + \
             'the detected features tagged by a red circle.\n' + \
             'The last output is the number of detected faces.'
-
-        self.description = {
-            'Label': 'Haar Detector',
-            'Icon': 'images/haarDetect.png',
-            'Color': '50:220:40:150',
-            'InTypes': {0: 'HRP_IMAGE'},
-            'OutTypes': {0: 'HRP_POINT', 1: 'HRP_RECT',
-                         2: 'HRP_IMAGE', 3: 'HRP_DOUBLE'},
-            'TreeGroup': "Feature Detection"
-        }
+        self.label = "Haar Detector"
+        self.icon = "images/haarDetect.png"
+        self.color = "50:220:40:150"
+        self.in_types = ["HRP_IMAGE"]
+        self.out_types = ["HRP_POINT", "HRP_RECT", "HRP_IMAGE", "HRP_DOUBLE"]
+        self.group = "Feature Detection"
 
         self.properties = {
             "cascade_name": {
@@ -120,33 +117,5 @@ class HaarDetect(OpenCVPlugin):
             'cvReleaseImage(&block$id$_img_o2);\n' + \
             'cvReleaseImage(&block$id$_img_i0);\n' + \
             'cvReleaseMemStorage(&block$id$_storage);\n'
-
-    # ----------------------------------------------------------------------
-    def get_help(self):
-        return self.help
-
-    # ----------------------------------------------------------------------
-    def __del__(self):
-        pass
-
-    # ----------------------------------------------------------------------
-    def get_description(self):
-        return self.description
-
-    # ----------------------------------------------------------------------
-    def get_properties(self):
-        return self.properties
-
-    # ----------------------------------------------------------------------
-    def generate_vars(self):
-        return self.vars
-
-    # ----------------------------------------------------------------------
-    def generate_function_call(self):
-        return self.function_call
-
-    # ----------------------------------------------------------------------
-    def generate_dealloc(self):
-        return self.dealloc
 
 # -----------------------------------------------------------------------------

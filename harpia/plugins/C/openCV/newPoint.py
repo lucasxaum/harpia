@@ -13,16 +13,13 @@ class NewPoint(OpenCVPlugin):
         self.x0 = 0
         self.y0 = 0
 
+        # Appearance
         self.help = "Creates a new Point."
-
-        self.description = {
-            'Label': 'New Point',
-            'Icon': 'images/newPoint.png',
-            'Color': '50:50:200:150',
-            'InTypes': "",
-            'OutTypes': {0: 'HRP_POINT'},
-            'TreeGroup': 'Basic Data Type'
-        }
+        self.label = "New Point"
+        self.icon = "images/newPoint.png"
+        self.color = "50:50:200:150"
+        self.out_types = ["HRP_POINT"]
+        self.group = "Basic Data Type"
 
         self.properties = {
             "x0": {
@@ -46,25 +43,5 @@ class NewPoint(OpenCVPlugin):
 
         self.function_call = \
             'block$id$_point_o0 = cvPoint($x0$,$y0$);\n'
-
-    # ----------------------------------------------------------------------
-    def get_help(self):
-        return self.help
-
-    # ----------------------------------------------------------------------
-    def get_description(self):
-        return self.description
-
-    # ----------------------------------------------------------------------
-    def get_properties(self):
-        return self.properties
-
-    # ----------------------------------------------------------------------
-    def generate_vars(self):
-        return self.vars
-
-    # ----------------------------------------------------------------------
-    def generate_function_call(self):
-        return self.function_call
 
 # ------------------------------------------------------------------------------

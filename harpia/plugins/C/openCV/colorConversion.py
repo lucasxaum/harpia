@@ -12,17 +12,15 @@ class ColorConversion(OpenCVPlugin):
         OpenCVPlugin.__init__(self)
         self.conversion_type = 'RGB -> GRAY'
 
+        # Appearance
         self.help = "Realiza a conversão de cores entre diferentes " + \
             "padrões de imagens coloridas e tons de cinza."
-
-        self.description = {
-            "Label": "Color Conversion",
-            "Icon": "images/colorConversion.png",
-            "Color": "50:125:50:150",
-            "InTypes": {0: "HRP_IMAGE"},
-            "OutTypes": {0: "HRP_IMAGE"},
-            "TreeGroup": "Filters and Color Conversion"
-        }
+        self.label = "Color Conversion"
+        self.icon = "images/colorConversion.png"
+        self.color = "50:125:50:150"
+        self.in_types = ["HRP_IMAGE"]
+        self.out_types = ["HRP_IMAGE"]
+        self.group = "Filters and Color Conversion"
 
         self.properties = {
             "conversion_type": {"name": "Conversion Type",
@@ -54,30 +52,6 @@ class ColorConversion(OpenCVPlugin):
             'cvReleaseImage(&block$id$_img_t);\n' + \
             'cvReleaseImage(&block$id$_img_i0);\n' + \
             'cvReleaseImage(&block$id$_img_o0);\n'
-
-    # ----------------------------------------------------------------------
-    def get_help(self):
-        return self.help
-
-    # ----------------------------------------------------------------------
-    def generate_dealloc(self):
-        return self.dealloc
-
-    # ----------------------------------------------------------------------
-    def __del__(self):
-        pass
-
-    # ----------------------------------------------------------------------
-    def get_description(self):
-        return self.description
-
-    # ----------------------------------------------------------------------
-    def get_properties(self):
-        return self.properties
-
-    # ----------------------------------------------------------------------
-    def generate_vars(self):
-        return self.vars
 
     # ----------------------------------------------------------------------
     def generate_function_call(self):
@@ -122,6 +96,5 @@ class ColorConversion(OpenCVPlugin):
             '{    cvMerge(block$id$_img_t ,block$id$_img_t ,' + \
             'block$id$_img_t ,NULL ,block$id$_img_o0);\n }\n' + \
             'else\n' + '{ block$id$_img_o0 = cvCloneImage(block$id$_img_t);\n}'
-
 
 # -----------------------------------------------------------------------------

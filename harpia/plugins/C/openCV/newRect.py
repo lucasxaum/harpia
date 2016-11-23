@@ -15,16 +15,13 @@ class NewRect(OpenCVPlugin):
         self.width = 640
         self.height = 480
 
+        # Appearance
         self.help = "Creates new rectangle"
-
-        self.description = {
-            'Label': 'New Rectangle',
-            'Icon': 'images/newRect.png',
-            'Color': '50:50:200:150',
-            'InTypes': "",
-            'OutTypes': {0: 'HRP_RECT'},
-            'TreeGroup': 'Basic Data Type'
-        }
+        self.label = "New Rectangle"
+        self.icon = "images/newRect.png"
+        self.color = "50:50:200:150"
+        self.out_types = ["HRP_RECT"]
+        self.group = "Basic Data Type"
 
         self.properties = {
             "x0": {
@@ -60,21 +57,5 @@ class NewRect(OpenCVPlugin):
         # -------------------C/OpenCv code------------------------------------
         self.function_call = \
             'block$id$_rect_o0 = cvRect($x0$, $y0$, $width$, $height$);\n'
-
-    # ----------------------------------------------------------------------
-    def get_help(self):
-        return self.help
-
-    # ----------------------------------------------------------------------
-    def get_description(self):
-        return self.description
-
-    # ----------------------------------------------------------------------
-    def get_properties(self):
-        return self.properties
-
-    # ----------------------------------------------------------------------
-    def generate_function_call(self):
-        return self.function_call
 
 # -----------------------------------------------------------------------------

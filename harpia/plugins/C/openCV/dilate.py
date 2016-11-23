@@ -13,17 +13,15 @@ class Dilate(OpenCVPlugin):
         self.masksize = "3x3"
         self.iterations = 1
 
+        # Appearance
         self.help = "Operação morfológica que provoca dilatação " + \
             "nos objetos de uma imagem, aumentando suas dimensões."
-
-        self.description = {
-            "Label": "Dilate",
-            "Icon": "images/dilate.png",
-            "Color": "180:230:220:150",
-            "InTypes": {0: "HRP_IMAGE"},
-            "OutTypes": {0: "HRP_IMAGE"},
-            "TreeGroup": "Morphological Operations"
-        }
+        self.label = "Dilate"
+        self.icon = "images/dilate.png"
+        self.color = "180:230:220:150"
+        self.in_types = ["HRP_IMAGE"]
+        self.out_types = ["HRP_IMAGE"]
+        self.group = "Morphological Operations"
 
         self.properties = {
             "masksize": {
@@ -59,30 +57,5 @@ class Dilate(OpenCVPlugin):
                         block$id$_arg_iterations);
             }
             '''
-
-    # ----------------------------------------------------------------------
-    def get_help(self):
-        return self.help
-
-    # ----------------------------------------------------------------------
-    def __del__(self):
-        pass
-
-    # ----------------------------------------------------------------------
-    def get_description(self):
-        return self.description
-
-    # ----------------------------------------------------------------------
-    def get_properties(self):
-        return self.properties
-
-    # ----------------------------------------------------------------------
-    def generate_vars(self):
-        return self.vars
-
-    # ----------------------------------------------------------------------
-    def generate_function_call(self):
-        return self.function_call
-
 
 # -----------------------------------------------------------------------------

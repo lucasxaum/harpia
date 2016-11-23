@@ -4,12 +4,11 @@
 import gi
 import os
 from filefilters import *
-from gi.repository import Gtk
-from gi.repository import GObject
-from harpia.GUI.components.stringfield import StringField
-
 gi.require_version('Gtk', '3.0')
-
+from gi.repository import Gtk
+from harpia.GUI.components.stringfield import StringField
+import gettext
+_ = gettext.gettext
 
 class Dialog():
 
@@ -40,8 +39,8 @@ class Dialog():
         if os.path.exists(name) is False:
             return True
 
-        msg = "Already exists a file with the same name in this folder."
-        msg = msg + " Do you want to continue?"
+        msg = _("Already exists a file with the same name in this folder.")
+        msg = msg + _(" Do you want to continue?")
         dialog = Dialog().confirm_dialog(msg, main_window)
         result = dialog.run()
         dialog.destroy()
@@ -109,7 +108,7 @@ class Dialog():
 
 # ----------------------------------------------------------------------
     def rename_dialog(self, main_window, diagram):
-        dialog = Gtk.Dialog("Rename", main_window,
+        dialog = Gtk.Dialog(_("Rename"), main_window,
                             0, (Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
                                 Gtk.STOCK_OK, Gtk.ResponseType.OK))
 
@@ -118,7 +117,7 @@ class Dialog():
         box.add(vbox)
 
         # File name
-        data = {"name": "File name",
+        data = {"name": _("File name"),
                 "value": diagram.get_file_name()}
         self.file_name = StringField(data, None)
         vbox.add(self.file_name)
