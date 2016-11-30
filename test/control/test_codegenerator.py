@@ -47,6 +47,10 @@ class TestCodeGenerator(TestCase):
         self.code_generator.generate_block_code()
 
     # ----------------------------------------------------------------------
+    def test_generate_code(self):
+        self.code_generator.generate_code()
+
+    # ----------------------------------------------------------------------
     def test_save_code(self):
         self.code_generator.save_code()
 

@@ -56,6 +56,26 @@ class TestBlockModel(TestCase):
         self.block_model.get_plugin()
 
     # ----------------------------------------------------------------------x
-    def test_get_description(self):
+    def test_get_label(self):
         self.block_model.get_description()
-        print 1,
+        print 1
+
+    # ----------------------------------------------------------------------x
+    def test_get_icon(self):
+        self.block_model.get_icon()
+
+    # ----------------------------------------------------------------------x
+    def test_get_color(self):
+        self.block_model.get_color()
+
+    # ----------------------------------------------------------------------x
+    def test_get_in_types(self):
+        self.block_model.get_in_types()
+
+    # ----------------------------------------------------------------------x
+    def test_get_out_types(self):
+        self.block_model.get_out_types()
+
+    # ----------------------------------------------------------------------x
+    def test_get_group(self):
+        self.block_model.get_group()

@@ -8,6 +8,35 @@ class TestPlugin(TestCase):
         win = MainWindow()
         self.plugin = MainControl(win)
 
+
+    # ----------------------------------------------------------------------x
+    def test_get_help(self):
+        self.plugin.get_help()
+
+    # ----------------------------------------------------------------------x
+    def test_get_label(self):
+        self.plugin.get_label()
+
+    # ----------------------------------------------------------------------x
+    def test_get_icon(self):
+        self.plugin.get_icon()
+
+    # ----------------------------------------------------------------------x
+    def test_get_color(self):
+        self.plugin.get_color()
+
+    # ----------------------------------------------------------------------x
+    def test_get_in_types(self):
+        self.plugin.get_in_types()
+
+    # ----------------------------------------------------------------------x
+    def test_get_out_types(self):
+        self.plugin.get_out_types()
+
+    # ----------------------------------------------------------------------x
+    def test_get_group(self):
+        self.plugin.get_group()
+
     # ----------------------------------------------------------------------x
     def test_get_output_port_name(self):
         self.plugin.get_output_port_name()
@@ -15,6 +44,14 @@ class TestPlugin(TestCase):
     # ----------------------------------------------------------------------x
     def test_get_input_port_name(self):
         self.plugin.get_input_port_name()
+
+    # ----------------------------------------------------------------------x
+    def test_get_position(self):
+        self.plugin.get_position()
+
+    # ----------------------------------------------------------------------x
+    def test_get_type(self):
+        self.plugin.get_type()
 
     # ----------------------------------------------------------------------x
     def test_get_id(self):
@@ -25,16 +62,8 @@ class TestPlugin(TestCase):
         self.plugin.set_id()
 
     # ----------------------------------------------------------------------x
-    def test_get_type(self):
-        self.plugin.get_type()
-
-    # ----------------------------------------------------------------------x
     def test_get_xml(self):
         self.plugin.get_xml()
-
-    # ----------------------------------------------------------------------x
-    def test_get_help(self):
-        self.plugin.get_help()
 
     # ----------------------------------------------------------------------x
     def test_get_properties(self):
@@ -51,14 +80,6 @@ class TestPlugin(TestCase):
     # ----------------------------------------------------------------------x
     def test_get_plugin(self):
         self.plugin.get_plugin()
-
-    # ----------------------------------------------------------------------x
-    def test_get_description(self):
-        self.plugin.get_description()
-
-    # ----------------------------------------------------------------------x
-    def test_get_position(self):
-        self.plugin.get_position()
 
     # ----------------------------------------------------------------------x
     def test_generate_header(self):
@@ -79,5 +100,3 @@ class TestPlugin(TestCase):
     # ----------------------------------------------------------------------x
     def test_generate_out_dealloc(self):
         self.plugin.generate_out_dealloc()
-
-    

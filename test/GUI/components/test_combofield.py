@@ -1,19 +1,17 @@
 from unittest import TestCase
-from harpia.GUI.components.checkfield import CheckField
+from harpia.GUI.components.combofield import ComboField
 
-class TestCheckField(TestCase):
+class TestComboField(TestCase):
 
     def setUp(self):
         """Do the test basic setup."""
         win = MainWindow()
-        self.check_field = MainControl(win)
+        self.combo_field = MainControl(win)
 
     # ----------------------------------------------------------------------x
     def test_get_type(self):
-        self.check_field.get_type()
+        self.combo_field.get_type()
 
     # ----------------------------------------------------------------------x
     def test_get_value(self):
-        self.check_field.get_value()
-
-    
+        self.combo_field.get_value()

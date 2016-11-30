@@ -9,27 +9,25 @@ class TestWorkArea(TestCase):
         self.work_area = MainControl(win)
 
     # ----------------------------------------------------------------------x
-    def add_diagram(self):
+    def test_add_diagram(self):
         self.work_area.add_diagram()
 
     # ----------------------------------------------------------------------x
-    def close_tab(self):
+    def test_close_tab(self):
         self.work_area.close_tab()
 
     # ----------------------------------------------------------------------x
-    def get_current_diagram(self):
+    def test_get_current_diagram(self):
         self.work_area.get_current_diagram()
 
     # ----------------------------------------------------------------------x
-    def rename_diagram(self):
+    def test_rename_diagram(self):
         self.work_area.rename_diagram()
 
     # ----------------------------------------------------------------------x
-    def resize(self):
+    def test_resize(self):
         self.work_area.resize()
 
     # ----------------------------------------------------------------------x
-    def close_tabs(self):
+    def test_close_tabs(self):
         self.work_area.close_tabs()
-
-    

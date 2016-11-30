@@ -1,19 +1,17 @@
 from unittest import TestCase
-from harpia.GUI.components.checkfield import CheckField
+from harpia.GUI.components.stringfield import StringField
 
-class TestCheckField(TestCase):
+class TestStringField(TestCase):
 
     def setUp(self):
         """Do the test basic setup."""
         win = MainWindow()
-        self.check_field = MainControl(win)
+        self.string_field = MainControl(win)
 
     # ----------------------------------------------------------------------x
     def test_get_type(self):
-        self.check_field.get_type()
+        self.string_field.get_type()
 
     # ----------------------------------------------------------------------x
     def test_get_value(self):
-        self.check_field.get_value()
-
-    
+        self.string_field.get_value()
